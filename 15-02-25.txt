@@ -1,0 +1,19 @@
+class Solution {
+    public int punishmentNumber(int n) {
+        int ps=0;
+        for(int i=1;i<=n;i++){
+            int sq=i*i;
+            if(check(sq,i))
+            ps+=sq;
+        }
+        return ps;
+
+    }
+    static boolean check(int n,int t){
+        if(n<t||t<0)
+        return false;
+        if(n==t)
+        return true;
+        return (check(n/10,t-(n%10))||check(n/100,t-(n%100))||check(n/1000,t-(n%1000)));
+    }
+}
